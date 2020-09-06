@@ -2,7 +2,7 @@ name: Upload build when a draft release is created
 
 on:
   release:
-    types: [created]
+    types: [created, published, unpublished]
 
 jobs:
   build:

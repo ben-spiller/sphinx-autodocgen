@@ -1,8 +1,10 @@
-name: Upload build when a draft release is created
+name: Upload the build when a new release is published
+
+# To publish a new version, publish an empty release and this will populate it, and also upload to PyPi
 
 on:
   release:
-    types: [created, published, unpublished]
+    types: [created]
 
 jobs:
   build:
@@ -18,14 +20,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install setuptools wheel twine sphinx
-      - name: Build whl
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      - name: Build whl and zip
         run: |
           python setup.py bdist_wheel
+          mv dist/*.whl ./
           
-          zip sphinx_autodocgen_${{ github.event.release.tag_name }}.zip dist/*.whl README.rst LICENSE CHANGELOG.rst
+          zip sphinx_autodocgen_${{ github.event.release.tag_name }}.zip *.whl README.rst LICENSE CHANGELOG.rst
 
       - name: Upload to GitHub Release
         id: upload-release-asset 
@@ -37,3 +37,15 @@ jobs:
           asset_path: sphinx_autodocgen_${{ github.event.release.tag_name }}.zip
           asset_name: sphinx_autodocgen_${{ github.event.release.tag_name }}.zip
           asset_content_type: application/zip
+
+      - name: Upload to PyPi
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          
+          # Test repo:
+          #twine upload --repository-url https://test.pypi.org/legacy/ *.whl
+          
+          # Real repo (be careful, must be final as releases cannot be deleted from here):
+          twine upload *.whl
+        

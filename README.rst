@@ -6,7 +6,7 @@ Python modules. Each module is a page with ``autodoc`` and navigation subheading
 each package has an autosummary with links and description for each of the the modules it contains. 
 
 The project this was originally developed for the PySys test framework. To see what the documentation for a typical 
-module looks like, see `https://pysys-test.github.io/pysys-test/autodocgen/pysys.writer.html`_. 
+module looks like, `see here <https://pysys-test.github.io/pysys-test/autodocgen/pysys.writer.html>`_. 
 
 Features include:
 

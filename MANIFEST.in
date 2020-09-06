@@ -1,0 +1,8 @@
+# This file configures the files in the source distribution
+
+# Include the top level readme and license documentation
+include *.rst
+include LICENSE
+
+include MANIFEST.in
+include setup.*

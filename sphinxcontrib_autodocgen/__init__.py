@@ -5,10 +5,10 @@ directives for a hierarchy of Python modules.
 See https://github.com/ben-spiller/sphinx-autodocgen
 """
 
-__copyright__ = "Copyright (C) 2019-2020 Ben Spiller"
+__copyright__ = "Copyright (C) 2019-2021 Ben Spiller"
 __author__ = "Ben Spiller"
 __license__ = "MIT"
-__version__ = "1.2"
+__version__ = "1.3"
 
 __all__ = ['AutoDocGen', 'setup']
 
@@ -132,10 +132,19 @@ class AutoDocGen:
 		self.app.setup_extension('sphinx.ext.autodoc')
 		self.app.setup_extension('sphinx.ext.autosummary')
 
-		self.app.add_config_value('autodocgen_config', default={}, rebuild='env')
+		self.app.add_config_value('autodocgen_config', default=[], rebuild='env')
 
 		# must generate and update the generated rst files quite early in the process (before builder stage)
-		self.app.connect('config-inited', lambda app, config: self.generate())
+		self.app.connect('config-inited', lambda app, config: self.generateAll())
+
+	def generateAll(self):
+		# allow a list of generation configs
+		config = self.app.config.autodocgen_config
+
+		if isinstance(config, dict): config = [config]
+		for c in config:
+			self.config = dict(c)
+			self.generate()
 
 	def generate(self):
 		"""
@@ -143,7 +152,6 @@ class AutoDocGen:
 		
 		Called on the Sphinx builder-inited event. 
 		"""
-		self.config = dict(self.app.config.autodocgen_config)
 		for k in self.Config._config_keys:
 			self.config.setdefault(k, getattr(self.Config, k))
 		

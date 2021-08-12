@@ -1,3 +1,9 @@
+1.3
+===
+
+Change configuration to accept a list of configs, in case you want to handle multiple sub-projects with different 
+auto-generated output directories. 
+
 1.2
 ===
 

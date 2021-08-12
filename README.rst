@@ -41,7 +41,7 @@ To use it, just add a few lines to your ``conf.py``::
 
 	import mymodule # The module you're documenting (assumes you've added the parent dir to sys.path)
 	
-	autodocgen_config = {
+	autodocgen_config = [{
 		'modules':[mymodule], 
 		'generated_source_dir': DOC_SOURCE_DIR+'/autodocgen-output/',
 		
@@ -59,5 +59,5 @@ To use it, just add a few lines to your ``conf.py``::
 		
 		# choose a different title for specific modules, e.g. the toplevel one
 		'module_title_decider': lambda modulename: 'API Reference' if modulename=='mymodule' else modulename,
-	}
+	}]
 

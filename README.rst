@@ -10,22 +10,22 @@ module looks like, `see here <https://pysys-test.github.io/pysys-test/autodocgen
 
 Features include:
 
-	- A strong emphasis on extensibility by writing simple Python callbacks. The extension takes care of walking the 
-	  Python hierarchy (the tricky bit), but lets you choose exactly what you want the rst to look like, using the 
-	  full power of Python rather than the (sometimes) restrictive templating library approach taken by other plugins. 
-	  
-	- Nice defaults that give an autosummary table for each package so users know what each of the contained modules 
-	  is for, and for each module a single page listing all the classes (and other members) with a navbar-visible 
-	  subheading for each class. 
-	
-	- Skipping of modules (e.g. internal modules) controlled by a regular expression. 
-	
-	- Ability to customize the autodoc configuration for individual modules. 
-	
-	- Ability to choose the title of each topic using a Python callback. 
-	
-	- Automatic generation of .rst files as part of conf.py without the need to separately run a tool like autogen 
-	  first. 
+- A strong emphasis on extensibility by writing simple Python callbacks. The extension takes care of walking the 
+  Python hierarchy (the tricky bit), but lets you choose exactly what you want the rst to look like, using the 
+  full power of Python rather than the (sometimes) restrictive templating library approach taken by other plugins. 
+  
+- Nice defaults that give an autosummary table for each package so users know what each of the contained modules 
+  is for, and for each module a single page listing all the classes (and other members) with a navbar-visible 
+  subheading for each class. 
+
+- Skipping of modules (e.g. internal modules) controlled by a regular expression. 
+
+- Ability to customize the autodoc configuration for individual modules. 
+
+- Ability to choose the title of each topic using a Python callback. 
+
+- Automatic generation of .rst files as part of conf.py without the need to separately run a tool like autogen 
+  first. 
 
 Sample
 ------

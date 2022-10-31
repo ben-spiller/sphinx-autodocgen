@@ -390,5 +390,8 @@ class AutoDocGen:
 
 def setup(app):
 	AutoDocGen(app).connect()
-	return {'version': __version__}
+	return {
+        'version': __version__,
+        'parallel_read_safe': True
+    }
 

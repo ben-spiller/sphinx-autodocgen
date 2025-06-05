@@ -39,10 +39,8 @@ To use it, just add a few lines to your ``conf.py``::
 		'sphinxcontrib_autodocgen',
 	]
 
-	import mymodule # The module you're documenting (assumes you've added the parent dir to sys.path)
-	
 	autodocgen_config = [{
-		'modules':[mymodule], 
+		'modules':['mymodule'], # (assumes you've added the parent dir of your module to sys.path)
 		'generated_source_dir': DOC_SOURCE_DIR+'/autodocgen-output/',
 		
 		# if module matches this then it and any of its submodules will be skipped
@@ -58,6 +56,6 @@ To use it, just add a few lines to your ``conf.py``::
 		},
 		
 		# choose a different title for specific modules, e.g. the toplevel one
-		'module_title_decider': lambda modulename: 'API Reference' if modulename=='mymodule' else modulename,
+		'module_title_decider': {'mymodule': 'API Reference'},
 	}]
 

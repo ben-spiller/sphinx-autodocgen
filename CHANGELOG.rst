@@ -1,3 +1,8 @@
+1.4
+===
+* Add support for Sphinx 8 (use a more realistic fake environment, deal with ObjectMember changes, etc)
+* Change configuration defaults to avoid passing functions and modules, which generates a warning in modern Sphinx due to not being picklable
+
 1.3
 ===
 

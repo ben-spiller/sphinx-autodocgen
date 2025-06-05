@@ -52,7 +52,7 @@ setup(
 	long_description=long_description,
 	long_description_content_type='text/x-rst',
 
-	python_requires=">=3.6, <4", # be flexible
+	python_requires=">=3.6", # be flexible
 
 	packages=setuptools.find_packages(),
 

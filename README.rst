@@ -8,6 +8,8 @@ each package has an autosummary with links and description for each of the the m
 The project this was originally developed for the PySys test framework. To see what the documentation for a typical 
 module looks like, `see here <https://pysys-test.github.io/pysys-test/autodocgen/pysys.writer.html>`_. 
 
+Current supported Sphinx version is v8.
+
 Features include:
 
 - A strong emphasis on extensibility by writing simple Python callbacks. The extension takes care of walking the 
@@ -39,10 +41,8 @@ To use it, just add a few lines to your ``conf.py``::
 		'sphinxcontrib_autodocgen',
 	]
 
-	import mymodule # The module you're documenting (assumes you've added the parent dir to sys.path)
-	
 	autodocgen_config = [{
-		'modules':[mymodule], 
+		'modules':['mymodule'], # (assumes you've added the parent dir of your module to sys.path)
 		'generated_source_dir': DOC_SOURCE_DIR+'/autodocgen-output/',
 		
 		# if module matches this then it and any of its submodules will be skipped
@@ -58,6 +58,6 @@ To use it, just add a few lines to your ``conf.py``::
 		},
 		
 		# choose a different title for specific modules, e.g. the toplevel one
-		'module_title_decider': lambda modulename: 'API Reference' if modulename=='mymodule' else modulename,
+		'module_title_decider': {'mymodule': 'API Reference'},
 	}]
 

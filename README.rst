@@ -8,6 +8,8 @@ each package has an autosummary with links and description for each of the the m
 The project this was originally developed for the PySys test framework. To see what the documentation for a typical 
 module looks like, `see here <https://pysys-test.github.io/pysys-test/autodocgen/pysys.writer.html>`_. 
 
+Current supported Sphinx version is v8.
+
 Features include:
 
 - A strong emphasis on extensibility by writing simple Python callbacks. The extension takes care of walking the 

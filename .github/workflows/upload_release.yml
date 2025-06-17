@@ -4,7 +4,9 @@ name: Upload the build when a new release is published
 
 on:
   release:
-    types: [created]
+    types: 
+      - created
+      - edited # can use this to re-trigger in case it failed
 
 jobs:
   build:
@@ -22,7 +24,7 @@ jobs:
           pip install setuptools wheel twine sphinx build
       - name: Build whl and zip
         run: |
-          python build
+          python -m build
           mv dist/*.whl ./
           
           zip sphinx_autodocgen_${{ github.event.release.tag_name }}.zip *.whl README.rst LICENSE CHANGELOG.rst

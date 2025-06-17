@@ -7,6 +7,8 @@ on:
     types: 
       - created
       - edited # can use this to re-trigger in case it failed
+  
+  workflow_dispatch: # allows manual triggering of the workflow, mostly just for debugging/problem solving
 
 jobs:
   build:

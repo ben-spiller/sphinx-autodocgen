@@ -13,6 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      # IMPORTANT: this permission is mandatory for Trusted Publishing
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -42,14 +45,8 @@ jobs:
           asset_name: sphinx_autodocgen_${{ github.event.release.tag_name }}.zip
           asset_content_type: application/zip
 
-      - name: Upload to PyPi
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          # Test repo:
-          #twine upload --repository-url https://test.pypi.org/legacy/ *.whl
-          
-          # Real repo (be careful, must be final as releases cannot be deleted from here):
-          twine upload *.whl
-        
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # Be careful, must be final as releases cannot be deleted from here"
+        #with:
+        #  repository-url: https://test.pypi.org/legacy/

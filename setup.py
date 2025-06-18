@@ -1,10 +1,12 @@
 #!/usr/bin/env python
-# Copyright (C) 2019-2020  Ben Spiller
+# Copyright (C) 2019-present  Ben Spiller
 
 import codecs, os, glob, sys, shutil
 
-import sphinxcontrib_autodocgen
 ROOTDIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(ROOTDIR)
+
+import sphinxcontrib_autodocgen
 
 import setuptools
 print('using setuptools v%s'%setuptools.__version__)

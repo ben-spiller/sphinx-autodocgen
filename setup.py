@@ -22,7 +22,6 @@ PLATFORMS_CLASSIFIERS = [
 	"Operating System :: OS Independent",
 ]
 CLASSIFIERS = [
-	"License :: OSI Approved :: MIT License",
 	"Development Status :: 5 - Production/Stable",
 	"Intended Audience :: Developers",
 	"Framework :: Sphinx :: Extension",
